@@ -465,30 +465,22 @@ function filterEmperors() {
 
   let filtered = [...emperors];
 
-  // 1. Apply Time Range Filter FIRST based on sliders
-  filtered = filtered.filter(emperor => {
-    const emperorStart = emperor.start;
-    const emperorEnd = emperor.end;
-    const sliderStart = startYear;
-    const sliderEnd = endYear;
-
-    return (
-      (emperorStart >= sliderStart && emperorStart <= sliderEnd) ||
-      (emperorEnd >= sliderStart && emperorEnd <= sliderEnd) ||
-      (emperorStart <= sliderStart && emperorEnd >= sliderEnd)
-    );
-  });
-
-  // 2. Apply Dynasty/Period filter SECOND if a period is selected (and AFTER time range filter)
-  if (periodFilter !== 'all') {
-    filtered = filtered.filter(emperor => emperor.dynasty === periodFilter || emperor.dynasty.includes(periodFilter));
-  }
-
-  // 3. Apply Death Cause Filter LAST
+  // Apply death cause filter
   if (deathFilter !== 'all') {
     filtered = filtered.filter(emperor => emperor.deathCause === deathFilter);
   }
 
+  // Apply dynasty/period filter
+  if (periodFilter !== 'all') {
+    filtered = filtered.filter(emperor => emperor.dynasty === periodFilter || emperor.dynasty.includes(periodFilter));
+  }
+
+  // Apply time range filter
+  filtered = filtered.filter(emperor =>
+    (emperor.start >= startYear && emperor.start <= endYear) ||
+    (emperor.end >= startYear && emperor.end <= endYear) ||
+    (emperor.start <= startYear && emperor.end >= endYear)
+  );
 
   // Update time range label
   const timeRangeLabel = document.getElementById('timeRangeLabel');

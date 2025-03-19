@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Emperors Visualisation</title>
+  
+  <script type="module" crossorigin src="/assets/index-1c9af970.js"></script>
+  <link rel="stylesheet" href="/assets/index-4abc061c.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Roman Emperors (27 BCE - 395 CE)</h1>
+      <p>Explore the lives, reigns, and deaths of Roman emperors through interactive visualisations</p>
+    </header>
+
+    <div class="controls">
+      <div class="filter-group">
+        <select id="deathFilter">
+          <option value="all">All Death Types</option>
+          <option value="assassination">Assassination</option>
+          <option value="natural">Natural Causes</option>
+          <option value="battle">Battle</option>
+          <option value="suicide">Suicide</option>
+          <option value="execution">Execution</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <select id="periodFilter">
+          <option value="all">All Periods</option>
+          <option value="julio-claudian">Julio-Claudian (27 BCE - 68 CE)</option>
+          <option value="flavian">Flavian (69 - 96 CE)</option>
+          <option value="nerva-antonine">Nerva-Antonine (96 - 192 CE)</option>
+          <option value="severan">Severan (193 - 235 CE)</option>
+          <option value="crisis">Crisis of the Third Century (235 - 284 CE)</option>
+          <option value="tetrarchy">Tetrarchy and Constantine (284 - 363 CE)</option>
+          <option value="valentinian">Valentinian Dynasty (364 - 395 CE)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <label for="timeRange">Time Period: <span id="timeRangeLabel">27 BCE - 395 CE</span></label>
+      <input type="range" min="-27" max="395" value="-27" class="time-slider" id="timeSliderStart">
+      <input type="range" min="-27" max="395" value="395" class="time-slider" id="timeSliderEnd">
+      <div class="time-labels">
+        <span>27 BCE</span>
+        <span>1 CE</span>
+        <span>100 CE</span>
+        <span>200 CE</span>
+        <span>300 CE</span>
+        <span>395 CE</span>
+      </div>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-number" id="totalEmperors">70</div>
+        <div class="stat-label">Total Emperors</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="avgReign">11</div>
+        <div class="stat-label">Average Reign (years)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="assassinationPercent">39%</div>
+        <div class="stat-label">Died by Assassination</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number" id="longestReign">41</div>
+        <div class="stat-label">Longest Reign (years)</div>
+      </div>
+    </div>
+
+    <h2>Emperor Timeline</h2>
+    <div class="timeline" id="emperorTimeline">
+      <!-- Emperors will be added here by JavaScript -->
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #B22222;"></div>
+        <span>Assassination</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #4682B4;"></div>
+        <span>Natural Causes</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #8B4513;"></div>
+        <span>Battle</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #4B0082;"></div>
+        <span>Suicide</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #2F4F4F;"></div>
+        <span>Execution</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #708090;"></div>
+        <span>Unknown</span>
+      </div>
+    </div>
+
+    <h2>Death Causes Distribution</h2>
+    <div class="chart-container">
+      <div class="chart" id="deathCauseChart">
+        <!-- Death cause pie chart will be added here by JavaScript -->
+      </div>
+    </div>
+
+    <h2>Reign Length Distribution</h2>
+    <div class="chart-container">
+      <div class="chart" id="reignLengthChart">
+        <!-- Reign length bar chart will be added here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>
