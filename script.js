@@ -548,6 +548,9 @@ document.getElementById('timeSliderStart').addEventListener('input', function() 
     this.value = endValue;
   }
 
+// Reset period filter when sliders are manually adjusted
+  document.getElementById('periodFilter').value = 'all';
+  
   updateVisualisations();
 });
 
@@ -560,6 +563,9 @@ document.getElementById('timeSliderEnd').addEventListener('input', function() {
     this.value = startValue;
   }
 
+// Reset period filter when sliders are manually adjusted
+  document.getElementById('periodFilter').value = 'all';
+  
   updateVisualisations();
 });
 
